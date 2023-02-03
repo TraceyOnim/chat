@@ -3,16 +3,12 @@ defmodule Chat do
   Documentation for `Chat`.
   """
 
-  @doc """
-  Hello world.
+  def receive_message(msg) do
+    IO.puts(msg)
+  end
 
-  ## Examples
-
-      iex> Chat.hello()
-      :world
-
-  """
-  def hello do
-    :world
+  def send_message(recipient, msg) do
+    Task.Supervisor.async({Chat.TaskSupervisor, recipient}, Chat, :receive_message, [msg])
+    |> Task.await()
   end
 end
