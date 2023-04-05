@@ -19,3 +19,8 @@ Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_do
 and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
 be found at [https://hexdocs.pm/chat](https://hexdocs.pm/chat).
 
+
+## References
+
+https://www.thegreatcodeadventure.com/elixir-and-the-beam-how-concurrency-really-works/
+

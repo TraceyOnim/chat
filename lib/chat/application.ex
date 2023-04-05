@@ -15,8 +15,11 @@ defmodule Chat.Application do
       # Starts a worker by calling: Chat.Worker.start_link(arg)
       # {Chat.Worker, arg}
       {Task.Supervisor, name: Chat.TaskSupervisor},
-      Chat.SimpleQueue
+      Chat.SimpleQueue,
+      # {DynamicSupervisor, name: Chat.DynamicSupervisor}
       # {DynamicSupervisor, strategy: :one_for_one, name: Chat.DynamicSupervisor}
+      {PartitionSupervisor,
+       child_spec: DynamicSupervisor, name: Chat.DynamicSupervisorWithPartition}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

@@ -34,7 +34,7 @@ defmodule Chat.SimpleQueue do
   end
 
   def handle_call(:stop, _, state) do
-    {:stop, :normal, state}
+    {:stop, {:shutdown, "failure"}, state}
   end
 
   def handle_cast({:push, element}, state) do
@@ -63,4 +63,6 @@ defmodule Chat.SimpleQueue do
   def stop do
     GenServer.call(__MODULE__, :stop)
   end
+
+  # https://blog.appsignal.com/2022/09/20/fix-process-bottlenecks-with-elixir-1-14s-partition-supervisor.html
 end
